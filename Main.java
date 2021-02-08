@@ -108,6 +108,13 @@ class Main{
             }else if(opcion_numero==4){
 
             }else if(opcion_numero==5){
+              Sorting.bubbleSort(data);
+              for(Datos ordenado : data){
+                    System.out.println(ordenado);
+                    contador++;
+                }
+                System.out.println("Cantidad de datos: " + contador);
+                contador=0;
 
             }else if(opcion_numero==6){
                 System.out.println("Gracias, espero que vuelvas pronto");

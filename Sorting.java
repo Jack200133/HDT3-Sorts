@@ -59,4 +59,19 @@ public class Sorting {
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
   }
 
+  public static void bubbleSort(Comparable[] list) 
+      { 
+        int n = list.length; 
+        for (int i = 0; i < n-1; i++) 
+            for (int j = 0; j < n-i-1; j++) 
+                if (list[j].compareTo(list[j+1]) < 0 )  
+                { 
+                    // cambia arr[j+1] con arr[j] 
+                    Comparable temp = list[j]; 
+                    list[j] = list[j+1]; 
+                    list[j+1] = temp; 
+                } 
+    }
+
+
 }
