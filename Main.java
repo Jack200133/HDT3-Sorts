@@ -9,44 +9,8 @@ class Main{
         ArrayList<Integer> numeros = new ArrayList<Integer>();
         int contador =0;
         Scanner scanner = new Scanner(System.in);
-        try{
-            Random rand = new Random();
-            String ruta = "numero.txt";
-            String contenido;
-            StringBuilder builder = new StringBuilder();
-            //generar 3000 datos aleatorios
-            for(int i=0;i<3000;i++){
-                boolean ciclo = true;
-                int aleatorio = rand.nextInt(6000);
-                do{
-                    if(numeros.contains(aleatorio)){
-                        aleatorio = rand.nextInt(6000);
-                    }else{
-                        numeros.add(aleatorio);
-                        ciclo=false;
-                    }
-                }while(ciclo);               
-            }
-            
-            //guardar los numeros en string
-            for(Integer item : numeros){
-                builder.append(item + " ");
-            }
-            contenido = builder.toString();
-
-            //realizar la creacion del file y guardarlo en ella
-            File file = new File(ruta);
-            if(!file.exists()){
-                file.createNewFile();
-            }
-            //escritura
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(contenido);
-            bw.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        //generar numero
+        generarNumeros(numeros);
         //agregar los datos
         Datos[] data = new Datos[3000];
         for(int i=0;i<3000;i++){
@@ -120,8 +84,59 @@ class Main{
                 System.out.println("Gracias, espero que vuelvas pronto");
                 terminar=false;
             }
+            //generar nuevos numeros cada vez
+            generarNumeros(numeros);
+            //agregar los datos
+            data = new Datos[3000];
+            for(int i=0;i<3000;i++){
+                //String numCadena = String.valueOf(numeros.get(i));
+                data[i] = new Datos (numeros.get(i));
+            }
         }while(terminar);
         scanner.close();
 
+    }
+
+    public static void generarNumeros(ArrayList<Integer> numeros){
+        numeros.clear();
+        try{
+            Random rand = new Random();
+            String ruta = "numero.txt";
+            String contenido;
+            StringBuilder builder = new StringBuilder();
+            //generar 3000 datos aleatorios
+            for(int i=0;i<3000;i++){
+                boolean ciclo = true;
+                int aleatorio = rand.nextInt(6000);
+                do{
+                    if(numeros.contains(aleatorio)){
+                        aleatorio = rand.nextInt(6000);
+                    }else{
+                        numeros.add(aleatorio);
+                        ciclo=false;
+                    }
+                }while(ciclo);               
+            }
+            
+            //guardar los numeros en string
+            for(Integer item : numeros){
+                builder.append(item + " ");
+            }
+            contenido = builder.toString();
+
+            //realizar la creacion del file y guardarlo en ella
+            File file = new File(ruta);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            //escritura
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            //limpiar el contenido del txt
+            bw.write(contenido);
+            bw.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
