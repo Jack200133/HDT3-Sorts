@@ -13,7 +13,7 @@ public class Datos implements Comparable<Datos>{
 
     public int compareTo(Datos dato){
         Integer result;
-        Integer otroDato = ((Datos)dato).getlastNumero();
+        Integer otroDato = (dato).getlastNumero();
         result=otroDato.compareTo(lastNumero);
 
         return result;

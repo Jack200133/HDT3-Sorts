@@ -68,9 +68,15 @@ class Main{
                 contador=0;
                 
             }else if(opcion_numero==3){
-                
+                Sorting.QuickSort(data,0, data.length-1);
+                for(Datos ordenado : data){
+                    System.out.println(ordenado);
+                    contador++;
+                }
+                System.out.println("Cantidad de datos: " + contador);
+                contador=0;
             }else if(opcion_numero==4){
-              Sorting.radixSort(data);
+              Sorting.radixSort(data, data.length);
               for(Datos ordenado : data){
                     System.out.println(ordenado);
                     contador++;
