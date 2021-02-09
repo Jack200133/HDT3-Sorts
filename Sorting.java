@@ -74,4 +74,56 @@ public class Sorting {
     }
 
 
+	//Una función de utilidad para obtener el valor máximo en arr[] 
+	private static int getMax(Comparable[] list, int n) 
+	{ 
+		int mx = arr[0]; 
+		for (int i = 1; i < n; i++) 
+			if (arr[i] > mx) 
+				mx = arr[i]; 
+		return mx; 
+	} 
+
+	// Una función para hacer el conteo de arr[] según 
+	// el dígito representado por exp. 
+	private static void countSort(Comparable[] list, int n, int exp) 
+	{ 
+		int output[] = new int[n]; // output array 
+		int i; 
+		int count[] = new int[10]; 
+		Arrays.fill(count, 0); 
+
+		// Almacenar el recuento de ocurrencias
+		for (i = 0; i < n; i++) 
+			count[(list[i] / exp) % 10]++; 
+
+		// Cambiar count[i] para que count[i] contenga ahora 
+		// posición real de este dígito en output[] 
+		for (i = 1; i < 10; i++) 
+			count[i] += count[i - 1]; 
+
+	
+		for (i = n - 1; i >= 0; i--) { 
+			output[count[(list[i] / exp) % 10] - 1] = arr[i]; 
+			count[(list[i] / exp) % 10]--; 
+		} 
+
+		//Copiar la matriz de salida a arr[], de modo que arr[] ahora 
+		// contenga los números ordenados según el dígito actual 
+		for (i = 0; i < n; i++) 
+			list[i] = output[i]; 
+	} 
+
+	// La función principal que ordena arr[] de tamaño n utilizando 
+	// Ordenación Radix 
+	public static void radixSort(Comparable[] list, int n) 
+	{ 
+		// Encontrar el número máximo para conocer el número de dígitos 
+		int m = getMax(list, n); 
+
+		for (int exp = 1; m / exp > 0; exp *= 10) 
+			countSort(list, n, exp); 
+	} 
+
+
 }
