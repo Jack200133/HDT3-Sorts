@@ -9,7 +9,7 @@ public class Sorting {
         Comparable tmp;
         
         while(i<list.length){
-            if(list[i-1].compareTo(list[i])>0){
+            if(list[i-1].compareTo(list[i])<0){
                 tmp = list[i-1];
                 list[i-1] =list[i];
                 list[i--] = tmp;
