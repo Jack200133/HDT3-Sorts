@@ -18,8 +18,7 @@ public class Sorting {
                  i = j; j++;
             }
         }
-
-        return ("Datos ornedados: ");
+        return ("Los datos ordenados son ");
     }
 
     //sort para tipo Merge
@@ -40,7 +39,7 @@ public class Sorting {
         
     }
 
-    private static String merge(Comparable[] first, Comparable[] second, Comparable[] result) {
+    private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) {
         int iFirst = 0;
         int iSecond = 0;
         int iMerged = 0;
@@ -61,11 +60,9 @@ public class Sorting {
         }
         System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
-
-        return ("Datos ornedados: ");
   }
 
-  public static String bubbleSort(Comparable[] list) 
+  public static String bubbleSort(Comparable[] list)
       { 
         int n = list.length; 
         for (int i = 0; i < n-1; i++) 
@@ -76,9 +73,8 @@ public class Sorting {
                     Comparable temp = list[j]; 
                     list[j] = list[j+1]; 
                     list[j+1] = temp; 
-                } 
-
-                return ("Datos ornedados: ");
+                }
+          return ("Los datos ordenados son ");
     }
 
 
@@ -123,7 +119,7 @@ public class Sorting {
 
         for (int exp = 1; m / exp > 0; exp *= 10)
             countSort(list, n, exp);
-            return ("Datos ornedados: ");
+        return ("Los datos ordenados son ");
     }
 
 
@@ -167,7 +163,8 @@ public class Sorting {
             QuickSort(list, low, pi-1);
             QuickSort(list, pi+1, high);
         }
-        return ("Datos ornedados: ");
+
+        return ("Los datos ordenados son ");
     }
 
 
