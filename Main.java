@@ -50,7 +50,8 @@ class Main{
             System.out.println("________________________");
             //accion
             if(opcion_numero==1){
-                Sorting.gnomeSort(data);
+                String res = Sorting.gnomeSort(data);
+                System.out.println(res);
                 for(Datos ordenado : data){
                     System.out.println(ordenado);
                     contador++;
@@ -68,7 +69,8 @@ class Main{
                 contador=0;
                 
             }else if(opcion_numero==3){
-                Sorting.QuickSort(data,0, data.length-1);
+                String res = Sorting.QuickSort(data,0, data.length-1);
+                System.out.println(res);
                 for(Datos ordenado : data){
                     System.out.println(ordenado);
                     contador++;
@@ -76,7 +78,8 @@ class Main{
                 System.out.println("Cantidad de datos: " + contador);
                 contador=0;
             }else if(opcion_numero==4){
-              Sorting.radixSort(data, data.length);
+              String res = Sorting.radixSort(data, data.length);
+              System.out.println(res);
               for(Datos ordenado : data){
                     System.out.println(ordenado);
                     contador++;
@@ -84,7 +87,8 @@ class Main{
                 System.out.println("Cantidad de datos: " + contador);
                 contador=0;
             }else if(opcion_numero==5){
-              Sorting.bubbleSort(data);
+              String res = Sorting.bubbleSort(data);
+              System.out.println(res);
               for(Datos ordenado : data){
                     System.out.println(ordenado);
                     contador++;

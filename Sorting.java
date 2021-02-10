@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Sorting {
 
     //sort para tipo Gnome
-    public static void gnomeSort(Comparable[] list){
+    public static String gnomeSort(Comparable[] list){
         int i=1;
         int j=2;
         Comparable tmp;
@@ -18,6 +18,8 @@ public class Sorting {
                  i = j; j++;
             }
         }
+
+        return ("Datos ornedados: ");
     }
 
     //sort para tipo Merge
@@ -38,7 +40,7 @@ public class Sorting {
         
     }
 
-    private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) {
+    private static String merge(Comparable[] first, Comparable[] second, Comparable[] result) {
         int iFirst = 0;
         int iSecond = 0;
         int iMerged = 0;
@@ -59,9 +61,11 @@ public class Sorting {
         }
         System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
+
+        return ("Datos ornedados: ");
   }
 
-  public static void bubbleSort(Comparable[] list) 
+  public static String bubbleSort(Comparable[] list) 
       { 
         int n = list.length; 
         for (int i = 0; i < n-1; i++) 
@@ -73,6 +77,8 @@ public class Sorting {
                     list[j] = list[j+1]; 
                     list[j+1] = temp; 
                 } 
+
+                return ("Datos ornedados: ");
     }
 
 
@@ -111,12 +117,13 @@ public class Sorting {
     }
 
 
-    static void radixSort(Datos[] list, int n)
+    static String radixSort(Datos[] list, int n)
     {
         int m = getMax(list, n);
 
         for (int exp = 1; m / exp > 0; exp *= 10)
             countSort(list, n, exp);
+            return ("Datos ornedados: ");
     }
 
 
@@ -147,7 +154,7 @@ public class Sorting {
       arr[] --> Array to be sorted,
       low  --> Starting index,
       high  --> Ending index */
-    public static void QuickSort(Comparable[] list, int low, int high)
+    public static String QuickSort(Comparable[] list, int low, int high)
     {
         if (low < high)
         {
@@ -160,6 +167,7 @@ public class Sorting {
             QuickSort(list, low, pi-1);
             QuickSort(list, pi+1, high);
         }
+        return ("Datos ornedados: ");
     }
 
 
