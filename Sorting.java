@@ -76,83 +76,65 @@ public class Sorting {
     }
 
 
-	//Una función de utilidad para obtener el valor máximo en arr[] 
-	private static Comparable getMax(Comparable[] list, int n)
-	{ 
-		Comparable mx = list[0];
-		for (int i = 1; i < n; i++) 
-			if ( list[i-1].compareTo(mx)> 0)
-				mx = (Integer) list[i];
-		return mx; 
-	} 
-
-	// Una función para hacer el conteo de arr[] según 
-	// el dígito representado por exp. 
-	private static void countSort(Comparable[] list, int n, int exp)
-	{ 
-		int output[] = new int[n]; // output array 
-		int i; 
-		int count[] = new int[10]; 
-		Arrays.fill(count, 0);
-
-		// Almacenar el recuento de ocurrencias
-		for (i = 0; i < n; i++) 
-			count[(list[i].compareTo(list[i+1]) / exp) % 10]++;
-
-		// Cambiar count[i] para que count[i] contenga ahora 
-		// posición real de este dígito en output[] 
-		for (i = 1; i < 10; i++) 
-			count[i] += count[i - 1]; 
-
-	
-		for (i = n - 1; i >= 0; i--) { 
-			output[count[((Integer)list[i]/ exp) % 10] - 1] = (int) list[i];
-			count[(list[i].compareTo(list[i+1])/ exp) % 10]--;
-		} 
-
-		//Copiar la matriz de salida a arr[], de modo que arr[] ahora 
-		// contenga los números ordenados según el dígito actual 
-		for (i = 0; i < n; i++) 
-			list[i] = output[i]; 
-	} 
-
-	// La función principal que ordena arr[] de tamaño n utilizando 
-	// Ordenación Radix 
-	public static void radixSort(Comparable[] list, int n) 
-	{ 
-		// Encontrar el número máximo para conocer el número de dígitos 
-        Comparable m = getMax(list, n);
-
-		for (int exp = 1; m.compareTo(1) / exp > 0; exp *= 10)
-			countSort(list, n, exp); 
-	}
+    static int getMax(Datos[] list, int n)
+    {
+        int mx = list[0].getlastNumero();
+        for (int i = 1; i < n; i++)
+            if (list[i].getlastNumero() > mx)
+                mx = list[i].getlastNumero();
+        return mx;
+    }
 
 
-    /* This function takes last element as pivot,
-      places the pivot element at its correct
-      position in sorted array, and places all
-      smaller (smaller than pivot) to left of
-      pivot and all greater elements to right
-      of pivot */
+    static void countSort(Datos[] list, int n, int exp)
+    {
+        Datos output[] = new Datos[n];
+        int i;
+        int count[] = new int[10];
+        Arrays.fill(count, 0);
+
+        for (i = 0; i < n; i++)
+            count[(list[i].getlastNumero() / exp) % 10]++;
+
+
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+
+        for (i = n - 1; i >= 0; i--) {
+            output[count[( list[i].getlastNumero() / exp) % 10] - 1] = list[i];
+            count[(list[i].getlastNumero() / exp) % 10]--;
+        }
+
+
+        for (i = 0; i < n; i++)
+            list[i] = output[i];
+    }
+
+
+    static void radixSort(Datos[] list, int n)
+    {
+        int m = getMax(list, n);
+
+        for (int exp = 1; m / exp > 0; exp *= 10)
+            countSort(list, n, exp);
+    }
+
+
     private static int partition(Comparable[] list, int low, int high)
     {
         Comparable pivot = list[high];
-        int i = (low-1); // index of smaller element
+        int i = (low-1);
         for (int j=low; j<high; j++)
         {
-            // If current element is smaller than the pivot
+
             if (list[j].compareTo(pivot) > 0)
             {
                 i++;
-
-                // swap arr[i] and arr[j]
                 Comparable temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
             }
         }
-
-        // swap arr[i+1] and arr[high] (or pivot)
         Comparable temp = list[i+1];
         list[i+1] = list[high];
         list[high] = temp;
