@@ -132,7 +132,7 @@ class Main{
                         ciclo=false;
                     }
                 }while(ciclo);               
-            }
+            } File file = new File(ruta);
             
             //guardar los numeros en string
             for(Integer item : numeros){
@@ -141,7 +141,7 @@ class Main{
             contenido = builder.toString();
 
             //realizar la creacion del file y guardarlo en ella
-            File file = new File(ruta);
+
             if(!file.exists()){
                 file.createNewFile();
             }
